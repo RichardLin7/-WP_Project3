@@ -5,6 +5,7 @@
 		<link rel="stylesheet" type="text/css" href="stylesheet.css" />
 	</head>
 	<body>
+		<?php $ret = loginstate();?>
 		<div class="header">
 			<h1>Conway's Game of Life - Game</h1>
 			<h3>Web Programing - Project 3</h3>
@@ -20,12 +21,10 @@
 
 		<div class="row">
 			<div class="column side">
-				<h2>Log In</h2>
+				<h2><?=$ret[4]?></h2>
 				<p>
-					<a href="login.php" class="button">LOGIN</a>
-					<button id="login" onclick="login.php">LOGIN</button><br />
-					<button id="signup">SIGN UP</button><br />
-					<button id="logout">LOGOUT</button><br />
+					<a href="<?=$ret[3]?>"><?=$ret[1]?></a></br>
+					<a href="<?=$ret[2]?>"><?=$ret[0]?></a></br>
 				</p>
 			</div>
 
@@ -211,4 +210,21 @@
 			</p>
 		</div>
 	</body>
+
+	<?php
+    function loginstate(){
+    $logins = false;
+	$user = $_COOKIE['user'];
+    if(isset($_COOKIE['user']))
+      if(!empty($_COOKIE['user']))
+        $logins = true;
+		$user = $_COOKIE['user'];
+     if(!$logins){
+           $array = array("Sign Up", "Login","signup.php","login.php","Please Log in");
+     }else{
+           $array = array("Play", "Log out", "home.php", "logout.php","Welcome Back");
+     } 
+     return $array;
+    }
+	?>
 </html>
