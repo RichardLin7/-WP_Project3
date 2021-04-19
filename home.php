@@ -12,20 +12,12 @@
 		</div>
 
 		<div class="websitelinks">
-			<a href="#">Link To Our Websites</a>
-			<a href="#">Link To Our Websites</a>
-			<a href="#">Link To Our Websites</a>
-			<a href="#">Link To Our Websites</a>
-			<a href="#">Link To Our Websites</a>
+			<a href="<?=$ret[3]?>"><?=$ret[1]?></a>
+			<a href="<?=$ret[2]?>" style="<?=$ret[4] ?>"><?=$ret[0]?></a>
 		</div>
 
 		<div class="row">
 			<div class="column side">
-				<h2><?=$ret[4]?></h2>
-				<p>
-					<a href="<?=$ret[3]?>"><?=$ret[1]?></a></br>
-					<a href="<?=$ret[2]?>"><?=$ret[0]?></a></br>
-				</p>
 			</div>
 
 			<div class="column middle">
@@ -220,9 +212,9 @@
         $logins = true;
 		$user = $_COOKIE['user'];
      if(!$logins){
-           $array = array("Sign Up", "Login","signup.php","login.php","Please Log in");
+           $array = array("Sign Up", "Login","signup.php","login.php","");
      }else{
-           $array = array("Play", "Log out", "home.php", "logout.php","Welcome Back");
+           $array = array("", "Log out", "", "logout.php","display: none;");
      } 
      return $array;
     }

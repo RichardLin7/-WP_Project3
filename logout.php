@@ -12,7 +12,7 @@
         <div id = 'box'>
         <fieldset>
             <legend>Log out <?=logout();?></legend>
-            <form action= 'home.php' method="post" enctype="multipart/form-data">
+            <form action= 'test.php' method="post" enctype="multipart/form-data">
             <input type="submit" value="Back"/>
 	    </fieldset>	
         </div>

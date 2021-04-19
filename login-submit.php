@@ -10,7 +10,7 @@
 			<h3>Web Programing - Project 3</h3>
 		</div>
 	  <div id = 'box'>
-      <form action="home.php" method="post" enctype="multipart/form-data">
+      <form action="test.php" method="post" enctype="multipart/form-data">
         <fieldset>
           <legend>Welcome!</legend>
             <label><?=directl();?></label>
