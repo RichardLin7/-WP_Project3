@@ -26,25 +26,20 @@
     <div class="footer">
       <h2>Play Controls</h2>
       <p>
-        <select name="pattern" id="pattern">
+        <select name="pattern" id="pattern" onchange="showPattern(this.value)">
+          <option value="default">Default</option>
           <option value="block">Block</option>
-          <option value="boat">Boat</option>
-          <option value="loaf">Loaf</option>
-          <option value="beehive">Beehive</option>
           <option value="blinker">Blinker</option>
           <option value="beacon">Beacon</option>
-          <option value="toad">Toad</option>
-          <option value="pulsar">Pulsar</option>
           <option value="glider">Glider</option>
-          <option value="lwss">Lightweight Spaceship</option>
-          <option value="ggg">Gosper Glider Gun</option>
+          <option value="random">Random</option>
         </select>
         <br />
-        <button id="start">START</button><br />
-        <button id="stop">STOP</button><br />
+        <button onclick="startGame()" id="start">START</button><br />
+        <button onclick="stopGame()" id="stop">STOP</button><br />
         <button id="next">INCREMENT 1 GENERATION</button><br />
         <button id="nextall">INCREMENT 23 GENERATIONS</button><br />
-        <button id="reset">RESET GAME</button><br />
+        <button onclick="resetGame()" id="reset">RESET GAME</button><br />
       </p>
     </div>
   </body>
