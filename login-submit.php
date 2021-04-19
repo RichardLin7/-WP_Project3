@@ -5,16 +5,20 @@
 		<link href="stylesheet.css" type="text/css" rel="stylesheet" />
 	</head>
 	<body>
-	 <div id = 'box'>
+    <div class="header">
+			<h1>Conway's Game of Life - Game</h1>
+			<h3>Web Programing - Project 3</h3>
+		</div>
+	  <div id = 'box'>
       <form action="home.php" method="post" enctype="multipart/form-data">
         <fieldset>
           <legend>Welcome!</legend>
             <label><?=directl();?></label>
-            <br><br>
+            <br>
             <p>
               Login Successful!
             </p>
-            <br><br>
+            <br>
             <input type="submit" value="Go Back to Main Page"/>
         </fieldset>
       </form>
@@ -34,68 +38,75 @@
 	function login(){
     $error = false;
 		$req = array('name','pw');
-    $errtype = "empty field";
+    $errtype = 'empty field';
     setcookie('backpage', "login.php", time() + (86400 * 30), "/");
-		foreach($req as $field){
-		  if(!$error && !isset($_POST[$field])){ $error = true;}
-        elseif (empty($_POST[$field])) {$error = true;}
-	    }
-        if(!$error){
-		      if (strlen($_POST['name'])<5 || strlen($_POST['name'])>12) {
-            $error = true;
-            $errtype = 'invalid name';
-          }
-        }
-        if(!$error){   
-          if (strlen($_POST['pw'])<5 || strlen($_POST['pw'])>12) {
-            $error = true;
-            $errtype = 'invalid password';
-          }
-        }
-        if($error){
-          setcookie('prev', $errtype, time() + (86400 * 30), "/");
-          header("Location: error.php");
-          exit();
-        }
 
-        $originstring = file_get_contents('users.txt');
-        $data = explode("\n",$originstring);
+		foreach($req as $field1){
+		  if(!$error && !isset($_POST[$field1])){ $error = true;}
+        elseif (empty($_POST[$field1])) {$error = true;}
+	  }
 
-        $newuser = $_POST['name'].",".$_POST['pw']."\n";
-        try {
-          $finduser = false;
-          $passwordmatch = false;
-          foreach($data as $field){
-            if(!empty($field)){
-              $ppl = explode(',', $field);
-              if($ppl[0] == $_POST['name']){ 
-                $finduser = true;
-                if($ppl[1] == $_POST['pw']){
-                $passwordmatch = true;
-                setcookie('user',  $_POST['name'], time() + (86400 * 30), "/");	    
-                }
-              }
+    if(!$error){
+		  if (strlen($_POST['name'])<5 || strlen($_POST['name'])>12) {
+        $error = true;
+        $errtype = 'invalid name';
+      }
+    }
+
+    if(!$error){   
+      if (strlen($_POST['pw'])<5 || strlen($_POST['pw'])>12) {
+        $error = true;
+        $errtype = 'invalid password';
+      }
+    }
+
+    if($error){
+      setcookie('prev', $errtype, time() + (86400 * 30), "/");
+      header("Location: error.php");
+      exit();
+    }
+
+    $originstring = file_get_contents('users.txt');
+    $data = explode("\n",$originstring);
+
+    $newuser = $_POST['name'].",".$_POST['pw']."\n";
+
+    try {
+      $finduser = false;
+      $passwordmatch = false;
+      foreach($data as $field){
+        if(!empty($field)){
+          $ppl = explode(',',$field);
+          if($ppl[0] == $_POST['name']){ 
+            $finduser = true;
+            echo $ppl[1];
+            if($ppl[1] == $_POST['pw']){
+              $passwordmatch = true;
+              setcookie('user',  $_POST['name'], time() + (86400 * 30), "/");	    
             }
           }
-        } catch (Exception $e) {
-          echo 'Caught exception: ',  $e->getMessage(), "\n";
         }
-
-        if(!$finduser){
-          $errtype = 'account not found';
-          setcookie('prev', $errtype, time() + (86400 * 30), "/");
-        header("Location: error.php");
-        exit();
-        }
-
-        if(!$passwordmatch){
-           $errtype = 'incorrect password';
-          setcookie('prev', $errtype, time() + (86400 * 30), "/");
-        header("Location: error.php");
-        exit();
-        }
-
-        return $_POST['name'];
       }
+    } catch (Exception $e) {
+      echo 'Caught exception: ',  $e->getMessage(), "\n";
+    }
+
+    if(!$finduser){
+      $errtype = 'account not found';
+      setcookie('prev', $errtype, time() + (86400 * 30), "/");
+      header("Location: error.php");
+      exit();
+    }
+
+    // if(!$passwordmatch){
+    //   $errtype = 'incorrect password';
+    //   setcookie('prev', $errtype, time() + (86400 * 30), "/");
+    //   header("Location: error.php");
+    //   exit();
+    // }
+
+    return;
+    // return $_POST['name'];
+  }
 	?>
 </html>

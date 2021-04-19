@@ -5,6 +5,10 @@
 		<link href="stylesheet.css" type="text/css" rel="stylesheet" />
 	</head>
 	<body>
+        <div class="header">
+			<h1>Conway's Game of Life - Game</h1>
+			<h3>Web Programing - Project 3</h3>
+		</div>
         <div id = 'box'>
         <fieldset>
             <legend>Log out <?=logout();?></legend>

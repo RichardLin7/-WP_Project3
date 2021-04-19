@@ -6,7 +6,11 @@
 	</head>
 	
 	<body>
-	 <div id = 'box'>
+      <div class="header">
+			<h1>Conway's Game of Life - Game</h1>
+			<h3>Web Programing - Project 3</h3>
+		</div>
+	   <div id = 'box'>
         <form action="login.php" method="post" enctype="multipart/form-data">
             <fieldset>
                <legend>Welcome!</legend>
@@ -17,7 +21,7 @@
                <button name="logintype" class ='button' type="submit" value="login1">Go to Login</button>
             </fieldset>
         </form>
-        </div>	
+      </div>	
 	</body>
 
 	<?php function 

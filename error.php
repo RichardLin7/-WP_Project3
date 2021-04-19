@@ -5,18 +5,23 @@
 		<link href="stylesheet.css" type="text/css" rel="stylesheet" />
 	</head>
 	<body>
-     <div id = 'box'>
-    <fieldset>
-        <legend>Error: <?=$_COOKIE['prev'];?> </legend>
-        <form action= '<?=$_COOKIE['backpage']?>' method="post" enctype="multipart/form-data">
-        <div id = 'line'><label><?=errors();?></label><br><br>
-        <input type="submit" value="Back"/>
-	</fieldset>	
+		<div class="header">
+			<h1>Conway's Game of Life - Game</h1>
+			<h3>Web Programing - Project 3</h3>
+		</div>
+    	<div id = 'box'>
+    		<fieldset>
+        		<legend>Error: <?=$_COOKIE['prev'];?> </legend>
+        		<form action= '<?=$_COOKIE['backpage']?>' method="post" enctype="multipart/form-data">
+        		<div id = 'line'><label><?=errors();?></label><br><br>
+        		<input type="submit" value="Back"/>
+			</fieldset>	
+		</div>
 	</body>
+
 	<?php
 	function errors() {
 	$prev = $_COOKIE['prev'];
-	setcookie("prev", "", time() - 3600,'/');
   	switch($prev){
     	case "empty field":
        		return "At least one field is empty";
@@ -42,6 +47,7 @@
  	   default:
 			return "Undefined error";
        }
+	setcookie("prev", "", time() - 3600,'/');
 	}
 	?>
 </html>
