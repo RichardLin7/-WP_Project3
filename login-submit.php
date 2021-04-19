@@ -79,15 +79,17 @@
           $ppl = explode(',',$field);
           if($ppl[0] == $_POST['name']){ 
             $finduser = true;
-            echo $ppl[1];
+            // echo $ppl[1];
+            setcookie('pass',  $ppl[1], time() + (86400 * 30), "/");	 
             if($ppl[1] == $_POST['pw']){
               $passwordmatch = true;
               setcookie('user',  $_POST['name'], time() + (86400 * 30), "/");	    
             }
-          }
+          } 
         }
-      }
-    } catch (Exception $e) {
+      } 
+    }
+    catch (Exception $e) {
       echo 'Caught exception: ',  $e->getMessage(), "\n";
     }
 
@@ -98,15 +100,14 @@
       exit();
     }
 
-    // if(!$passwordmatch){
-    //   $errtype = 'incorrect password';
-    //   setcookie('prev', $errtype, time() + (86400 * 30), "/");
-    //   header("Location: error.php");
-    //   exit();
-    // }
-
-    return;
-    // return $_POST['name'];
+    if(!$passwordmatch){
+      $errtype = 'incorrect password';
+      setcookie('prev', $errtype, time() + (86400 * 30), "/");
+      header("Location: error.php");
+      exit();
+    }
+    return $_POST['name'];
+    // return;
   }
 	?>
 </html>
