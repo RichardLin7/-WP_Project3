@@ -23,7 +23,13 @@ function setStartingGrid() {
 function gridClicked(clickedId) {
   let button = document.getElementById(clickedId);
   // button.remo
+if(button.style.backgroundColor != "red"){
   button.style.backgroundColor = "red";
+
+}
+else{
+button.style.backgroundColor = "white";
+}
 }
 
 setStartingGrid();

@@ -11,13 +11,27 @@
   margin: 0.15%;
 }
 
+#game{
+
+height: 50%;
+width: 50%;
+
+display: block;
+margin-right: auto;
+margin-left: auto;
+
+
+}
 .row {
   font-size: 0;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 800px;
+  display: flex;
+  
+  
+
+
 }
+
+
 
 .section {
   margin: -1%;
@@ -57,9 +71,7 @@
 /* Create three unequal columns that floats next to each other */
 
 /* Left and right column */
-.column.side {
-  width: 25%;
-}
+
 
 /* Login/Signup Buttons*/
 .column.side a {
@@ -75,10 +87,7 @@
 }
 
 /* Middle column */
-.column.middle {
-  width: 50%;
-  text-align: center;
-}
+
 
 /* Clear floats after the columns */
 /* .row:after {
@@ -87,9 +96,13 @@
   clear: both;
 } */
 
-button .testButton {
+
+.row .testButton {
   width: 10px;
-  height: 10px;
+  height: 12px;
+
+border: 1px solid #cccccc;
+background-color: #FFFFFF;
 }
 
 button .clicked {
